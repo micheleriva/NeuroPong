@@ -1,3 +1,12 @@
+const Cortex = require('./cortex')
+
+const client = new Cortex({})
+
+client.ready.then(() =>
+  client.init()
+  .queryHeadsets()
+  .then(headsets => console.log('headsets', headsets))
+)
 /**
  * Canvas Variables
  */
@@ -32,7 +41,7 @@ const BALL_RADIUS = 10
 const PADDLE_WIDTH  = 75
 const PADDLE_HEIGHT = 10
 const PADDLE_DX     = 7                                   // Each time dx key is pressed, move the paddle for 7 pixels
-let PADDLE_X        = (CANVAS_WIDTH - PADDLE_WIDTH) / 2   // Paddle location
+let   PADDLE_X      = (CANVAS_WIDTH - PADDLE_WIDTH) / 2   // Paddle location
 
 /**
  * User controls
