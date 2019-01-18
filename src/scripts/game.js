@@ -16,7 +16,7 @@ const CANVAS_HEIGHT = canvas.height
  */
 
 let x  = CANVAS_WIDTH / 2
-let y  = CANVAS_HEIGHT - 50
+let y  = CANVAS_HEIGHT - 30
 let dx = 2
 let dy = -2
 
@@ -29,10 +29,10 @@ const BALL_RADIUS = 10
  * Paddle variables
  */
 
-const PADDLE_WIDTH  = 100
+const PADDLE_WIDTH  = 75
 const PADDLE_HEIGHT = 10
-const PADDLE_DX     = 7 // Each time dx key is pressed, move the paddle for 7 pixels
-let PADDLE_X        = (CANVAS_WIDTH - PADDLE_WIDTH) / 2
+const PADDLE_DX     = 7                                   // Each time dx key is pressed, move the paddle for 7 pixels
+let PADDLE_X        = (CANVAS_WIDTH - PADDLE_WIDTH) / 2   // Paddle location
 
 /**
  * User controls
@@ -82,10 +82,10 @@ function createBall() {
 function createPaddle() {
   ctx.beginPath()
   ctx.rect(
-    PADDLE_X,             // Initial X rect position
-    CANVAS_HEIGHT - 40,   // Initial Y rect position
-    PADDLE_WIDTH,         // Paddle width
-    PADDLE_HEIGHT         // Paddle height
+    PADDLE_X,                        // Initial X rect position
+    CANVAS_HEIGHT - 30,   // Initial Y rect position
+    PADDLE_WIDTH,                    // Paddle width
+    PADDLE_HEIGHT                    // Paddle height
   )
   ctx.fillStyle = "#fff"
   ctx.fill()
@@ -110,9 +110,9 @@ function draw() {
   if(
     y + dy < BALL_RADIUS ||
     (
-         y + dx > CANVAS_HEIGHT - PADDLE_HEIGHT - BALL_RADIUS
+         y + dy > CANVAS_HEIGHT - PADDLE_HEIGHT - BALL_RADIUS
       && x + dx > PADDLE_X
-      && dx < PADDLE_X + PADDLE_WIDTH
+      && x + dx < PADDLE_X + PADDLE_WIDTH
     )
   ) {
     dy = -dy
@@ -137,7 +137,6 @@ function draw() {
   if (leftPressed && PADDLE_X > 0) {
     PADDLE_X -= PADDLE_DX
   }
-
 
   // Move ball in the empty space
   x += dx
