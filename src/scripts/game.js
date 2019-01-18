@@ -83,7 +83,7 @@ function createPaddle() {
   ctx.beginPath()
   ctx.rect(
     PADDLE_X,                        // Initial X rect position
-    CANVAS_HEIGHT - 30,   // Initial Y rect position
+    CANVAS_HEIGHT - 30,              // Initial Y rect position
     PADDLE_WIDTH,                    // Paddle width
     PADDLE_HEIGHT                    // Paddle height
   )
